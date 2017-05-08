@@ -39,11 +39,6 @@ void delete_field(int rows, int columns, int** field){
 	return;
 }
 
-/* 
-	--------------------------------------------------------------------------
-	QUESTE FUNZIONI DEVONO ESSERE ANCORA COMPLETAMENTE IMPLEMENTATE E TESTATE
-  	--------------------------------------------------------------------------
-*/
 // inizializzo a zero il campo
 void zero(int rows, int columns, int** field){
 	int i,j;
@@ -51,40 +46,6 @@ void zero(int rows, int columns, int** field){
 		for(j=0;j<columns;j++)
 			field[i][j] = 0;
 }
-
-int casuale(int min, int max){
-	int x;
-	unsigned int seed = time(NULL); 
-	//printf("%d %d\n",min,max);
-	x = rand_r(&seed) % (max + 1 - min) + min;
-	//x = rand() % max; 
-	return x;
-}
-
-// Assumes 0 <= max <= RAND_MAX
-// Returns in the closed interval [0, max]
-long ra(long max) {
-  unsigned long
-    // max <= RAND_MAX < ULONG_MAX, so this is okay.
-    num_bins = (unsigned long) max + 1,
-    num_rand = (unsigned long) RAND_MAX + 1,
-    bin_size = num_rand / num_bins,
-    defect   = num_rand % num_bins;
-
-  long x;
-
-
-  do {
-   x = random();
-  }
-  // This is carefully written not to overflow
-  while (num_rand - defect <= (unsigned long)x);
-
-  // Truncated division is intentional
-  return x/bin_size;
-}
-
-
 
 //Dato un numero di righe, la dimensione del field e il numero di mine posiziona in maniera randomica le mine
 //al termine genera un file in cui salva il campo appena generato (possibile nome con timestamp e caratterische?)
@@ -116,3 +77,37 @@ int generate_field(int rows, int columns, int **field, int mines){
 	}
 	return 0;
 }
+
+/* 
+	--------------------------------------------------------------------------
+	QUESTE FUNZIONI DEVONO ESSERE ANCORA COMPLETAMENTE IMPLEMENTATE E TESTATE
+  	--------------------------------------------------------------------------
+*/
+
+
+// Assumes 0 <= max <= RAND_MAX
+// Returns in the closed interval [0, max]
+long ra(long max) {
+  unsigned long
+    // max <= RAND_MAX < ULONG_MAX, so this is okay.
+    num_bins = (unsigned long) max + 1,
+    num_rand = (unsigned long) RAND_MAX + 1,
+    bin_size = num_rand / num_bins,
+    defect   = num_rand % num_bins;
+
+  long x;
+
+
+  do {
+   x = random();
+  }
+  // This is carefully written not to overflow
+  while (num_rand - defect <= (unsigned long)x);
+
+  // Truncated division is intentional
+  return x/bin_size;
+}
+
+
+
+

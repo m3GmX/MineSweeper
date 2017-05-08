@@ -8,14 +8,16 @@
 int** create_field(int rows, int columns);
 void print_field(int rows, int columns, int** field);
 void delete_field(int rows, int columns, int** field);
+void zero(int rows, int columns,int** field);
+int generate_field(int rows, int columns, int **field, int mines);
 
 /* 
 	--------------------------------------------------------------------------
 	QUESTE FUNZIONI DEVONO ESSERE ANCORA COMPLETAMENTE IMPLEMENTATE E TESTATE
   	--------------------------------------------------------------------------
 */
-void zero(int rows, int columns,int** field);
 
-int generate_field(int rows, int columns, int **field, int mines);
+
+
 
 #endif
